@@ -69,7 +69,7 @@ app.listen(4003, async () => {
     console.log('query service started on port 4003');
     console.log('starting event sync process');
     try {
-        const events = await axios.get('http://localhost:4002/events');
+        const events = await axios.get('http://event-bus-clusterip-service:4002/events');
         events.data.forEach((event) => handleEvent(event));
         console.log('finshed event synching');
     }

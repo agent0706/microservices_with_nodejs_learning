@@ -21,7 +21,7 @@ app.post('/posts/:id/comments', async (req, res) => {
         postId
     };
     
-    await axios.post('http://localhost:4002/events', {
+    await axios.post('http://event-bus-clusterip-service:4002/events', {
         type: 'CommentCreated',
         data: commentData
     });
@@ -36,7 +36,7 @@ app.post('/events', async (req, res) => {
 
     if (type === 'CommentModerated') {
         const updatedComment = data;
-        await axios.post('http://localhost:4002/events', {
+        await axios.post('http://event-bus-clusterip-service:4002/events', {
             type: 'CommentUpdated',
             data: updatedComment
         });

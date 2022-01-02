@@ -18,10 +18,10 @@ app.post('/events', (req, res) => {
 
     events.push(eventPayload);
 
-    axios.post('http://localhost:4000/events', eventPayload).catch((err) => console.log('error connection to posts service'));
-    axios.post('http://localhost:4001/events', eventPayload).catch((err) => console.log('error connection to comments service'));
-    axios.post('http://localhost:4003/events', eventPayload).catch((err) => console.log('error connection to query service'));
-    axios.post('http://localhost:4004/events', eventPayload).catch((err) => console.log('error connection to moderation service'));
+    axios.post('http://posts-clusterip-service:4000/events', eventPayload).catch((err) => console.log('error connection to posts service'));
+    axios.post('http://comments-clusterip-service:4001/events', eventPayload).catch((err) => console.log('error connection to comments service'));
+    axios.post('http://query-clusterip-service:4003/events', eventPayload).catch((err) => console.log('error connection to query service'));
+    axios.post('http://moderation-clusterip-service:4004/events', eventPayload).catch((err) => console.log('error connection to moderation service'));
 
     res.send({status: 'ok'});
 });

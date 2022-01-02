@@ -12,7 +12,7 @@ app.use(cors());
 app.post('/posts', async (req, res) => {
     const id = randomBytes(4).toString('hex');
     const{title} = req.body;
-    await axios.post('http://localhost:4002/events', {
+    await axios.post('http://event-bus-clusterip-service:4002/events', {
         type: 'PostCreated',
         data: {id, title}
     });
